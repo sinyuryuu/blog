@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Arduino MQTT 控制、傳輸 - 網頁轉移中--水瀬いのり最高！！</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+<link href="/blog/ja-jp/2021/12/24/zh-tw/Arduino%20MQTT%20%E6%8E%A7%E5%88%B6%E3%80%81%E5%82%B3%E8%BC%B8/" rel="alternate" hreflang="ja-JP" />
+    
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="程式碼為下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arduino MQTT 控制、傳輸">
+<meta property="og:url" content="https://sinyuryuu.github.io/blog/2021/12/24/zh-tw/Arduino%20MQTT%20%E6%8E%A7%E5%88%B6%E3%80%81%E5%82%B3%E8%BC%B8/index.html">
+<meta property="og:site_name" content="網頁轉移中--水瀬いのり最高！！">
+<meta property="og:description" content="程式碼為下">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-12-24T01:45:00.000Z">
+<meta property="article:modified_time" content="2022-01-24T15:20:49.312Z">
+<meta property="article:author" content="sinyu">
+<meta property="article:tag" content="Arduino">
+<meta property="article:tag" content="MQTT">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/blog/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/blog/">
+                
+                <img src="/blog/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/blog/archives">歸檔</a>
+            
+            <a class="navbar-item "
+               href="/blog/categories">分類</a>
+            
+            <a class="navbar-item "
+               href="/blog/tags">標籤</a>
+            
+            <a class="navbar-item "
+               href="/blog/schedule">行程</a>
+            
+            <a class="navbar-item "
+               href="/blog/about">關於</a>
+            
+            <a class="navbar-item "
+               href="/blog/friends">好友</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+		
+<div class="column is-narrow has-text-centered">
+    <div class="dropdown is-up is-right is-hoverable" style="margin-top: -0.2em;">
+        <div class="dropdown-trigger">
+            <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu7">
+                <span class="icon">
+                    <i class="fas fa-globe"></i>
+                </span>
+                <span>繁體中文</span>
+                <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+            </button>
+        </div>
+        <div class="dropdown-menu has-text-left" role="menu" style="top:100%">
+            <div class="dropdown-content">
+            
+                <a href="/blog/2021/12/24/zh-tw/Arduino%20MQTT%20%E6%8E%A7%E5%88%B6%E3%80%81%E5%82%B3%E8%BC%B8/" class="dropdown-item">
+                    繁體中文
+                </a>
+            
+                <a href="/blog/ja-jp/2021/12/24/zh-tw/Arduino%20MQTT%20%E6%8E%A7%E5%88%B6%E3%80%81%E5%82%B3%E8%BC%B8/" class="dropdown-item">
+                    日本語
+                </a>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+            <a class="navbar-item" title="GitHub" target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Arduino MQTT 控制、傳輸
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2021-12-24T01:45:00.000Z" itemprop="datePublished">12月 24 2021</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/blog/categories/%E5%BF%83%E5%BE%97/">心得</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分鐘 讀完 (約 322 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p><strong>程式碼為下</strong></p>
+<span id="more"></span>
+
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">#include </span><br><span class="line">#include </span><br><span class="line">const int led=2;    //內建LED</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">const char* ssid = "MISR";</span><br><span class="line">const char* password = "WIFI密碼";</span><br><span class="line">const char* mqttServer = "192.168.0.144";</span><br><span class="line">const char* mqtt_server = "192.168.0.144";</span><br><span class="line"></span><br><span class="line">const char* mqttUser = "bob01";</span><br><span class="line">const char* mqttPassword = "123456";</span><br><span class="line">const int mqttPort = 1883;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">WiFiClient espClient;</span><br><span class="line">PubSubClient client(espClient);</span><br><span class="line">long lastMsg = 0;</span><br><span class="line">char msg[50];</span><br><span class="line">int value = 0;</span><br><span class="line"></span><br><span class="line">float temperature = 0;</span><br><span class="line">float humidity = 0;</span><br><span class="line"></span><br><span class="line">void setup() {</span><br><span class="line">  Serial.begin(115200);</span><br><span class="line">  setup_wifi();</span><br><span class="line">  client.setServer(mqtt_server, 1883);</span><br><span class="line">  client.setCallback(callback);</span><br><span class="line"></span><br><span class="line">  pinMode(led, OUTPUT);</span><br><span class="line"> </span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">void setup_wifi() {</span><br><span class="line">  delay(10);</span><br><span class="line">  // We start by connecting to a WiFi network</span><br><span class="line">  Serial.println();</span><br><span class="line">  Serial.print("Connecting to ");</span><br><span class="line">  Serial.println(ssid);</span><br><span class="line"></span><br><span class="line">  WiFi.begin(ssid, password);</span><br><span class="line"></span><br><span class="line">  while (WiFi.status() != WL_CONNECTED) {</span><br><span class="line">    delay(500);</span><br><span class="line">    Serial.print(".");</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  Serial.println("");</span><br><span class="line">  Serial.println("WiFi connected");</span><br><span class="line">  Serial.println("IP address: ");</span><br><span class="line">  Serial.println(WiFi.localIP());</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void callback(char* topic, byte* message, unsigned int length) {</span><br><span class="line">  Serial.print("Message arrived on topic: ");</span><br><span class="line">  Serial.print(topic);</span><br><span class="line">  Serial.print(". Message: ");</span><br><span class="line">  String messageTemp;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  for (int i = 0; i &lt; length; i++) {</span><br><span class="line">    Serial.print((char)message[i]);</span><br><span class="line">    messageTemp += (char)message[i];</span><br><span class="line">  }</span><br><span class="line">  Serial.println();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> // Feel free to add more if statements to control more GPIOs with MQTT</span><br><span class="line"></span><br><span class="line">  // If a message is received on the topic esp32/output, you check if the message is either "on" or "off". </span><br><span class="line">  // Changes the output state according to the message</span><br><span class="line">  if (String(topic) == "esp/son") {</span><br><span class="line">    Serial.print("Changing output to ");</span><br><span class="line">    if(messageTemp == "on"){</span><br><span class="line">      Serial.println("開");</span><br><span class="line">      digitalWrite(led, HIGH);</span><br><span class="line">    }</span><br><span class="line">    else if(messageTemp == "soff"){</span><br><span class="line">      Serial.println("關");</span><br><span class="line">      digitalWrite(led, LOW);</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void reconnect() {</span><br><span class="line">  // Loop until we're reconnected</span><br><span class="line">  while (!client.connected()) {</span><br><span class="line">    Serial.print("Attempting MQTT connection...");</span><br><span class="line">    // Attempt to connect</span><br><span class="line">    if (client.connect("ESP32Client", mqttUser, mqttPassword)) {</span><br><span class="line">      Serial.println("connected");</span><br><span class="line">      // Subscribe</span><br><span class="line">      client.subscribe("esp/son");</span><br><span class="line">    } else {</span><br><span class="line">      Serial.print("failed, rc=");</span><br><span class="line">      Serial.print(client.state());</span><br><span class="line">      Serial.println(" try again in 5 seconds");</span><br><span class="line">      // Wait 5 seconds before retrying</span><br><span class="line">      delay(5000);</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void loop() {</span><br><span class="line">  if (!client.connected()) {</span><br><span class="line">    reconnect();</span><br><span class="line">  }</span><br><span class="line">  client.loop();</span><br><span class="line"></span><br><span class="line">  long now = millis();</span><br><span class="line">  if (now - lastMsg &gt; 5000) {</span><br><span class="line">    lastMsg = now;</span><br><span class="line"></span><br><span class="line">  client.publish("esp/test", "yes");</span><br><span class="line">  delay(2000);</span><br><span class="line">    </span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>參考:<br><a target="_blank" rel="noopener" href="https://www.blogger.com/blog/post/edit/8903906533438411529/215278012872185946#">Https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/</a></p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/blog/tags/Arduino/">#Arduino</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/blog/tags/MQTT/">#MQTT</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/blog/2022/01/24/zh-tw/%E9%80%99%E6%98%AF%E6%B8%AC%E8%A9%A6%EF%BC%88%E8%BD%89%E7%A7%BB%E5%AE%8C%E6%88%90~%EF%BC%89/">這是測試</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/blog/2021/12/24/zh-tw/Flask%20MQTT%20%E9%80%A3%E7%B5%90%20Socket%20%E5%8D%B3%E6%99%82%E9%A1%AF%E7%A4%BAMQTT%E5%82%B3%E9%80%81%E4%B9%8B%E8%A8%8A%E6%81%AF/">Flask MQTT 連結 Socket 即時顯示MQTT傳送之訊息</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2022 sinyu&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        target="_blank" rel="noopener" href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-TW");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/blog/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/blog/js/insight.js"></script>
+
+    
+</body>
+</html>
