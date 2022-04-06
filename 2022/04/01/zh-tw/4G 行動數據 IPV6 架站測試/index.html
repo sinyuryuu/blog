@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>4G 行動數據 IPV6 架站測試 - 程式記事</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+<link href="/blog/ja-jp/2022/04/01/zh-tw/4G%20%E8%A1%8C%E5%8B%95%E6%95%B8%E6%93%9A%20IPV6%20%E6%9E%B6%E7%AB%99%E6%B8%AC%E8%A9%A6/" rel="alternate" hreflang="ja-JP" />
+    
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="本次實驗為使用4G 行動數據網路看使否能取得外部實體IP的實驗  據所皆知，目前IPV4的IP已經不足夠使用因此於2012發展出IPV6解決IP不足問題，但是至今2022年目前仍未普及不過台灣目前電信商基本上都支援IPV4&#x2F;IPV6服務，目前獲得的IPV4地址均為虛擬IP（非浮動IP）無法直接連線得需透過第三方通道（VPS、Zerotier）對內部網路進行穿透才能夠存取。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4G 行動數據 IPV6 架站測試">
+<meta property="og:url" content="https://sinyuryuu.github.io/blog/2022/04/01/zh-tw/4G%20%E8%A1%8C%E5%8B%95%E6%95%B8%E6%93%9A%20IPV6%20%E6%9E%B6%E7%AB%99%E6%B8%AC%E8%A9%A6/index.html">
+<meta property="og:site_name" content="程式記事">
+<meta property="og:description" content="本次實驗為使用4G 行動數據網路看使否能取得外部實體IP的實驗  據所皆知，目前IPV4的IP已經不足夠使用因此於2012發展出IPV6解決IP不足問題，但是至今2022年目前仍未普及不過台灣目前電信商基本上都支援IPV4&#x2F;IPV6服務，目前獲得的IPV4地址均為虛擬IP（非浮動IP）無法直接連線得需透過第三方通道（VPS、Zerotier）對內部網路進行穿透才能夠存取。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/D82GJWd.png">
+<meta property="og:image" content="https://i.imgur.com/cQygYuj.png">
+<meta property="og:image" content="https://i.imgur.com/m9ep5tQ.png">
+<meta property="og:image" content="https://i.imgur.com/uzmFuWe.png">
+<meta property="og:image" content="https://i.imgur.com/ycyi4sL.png">
+<meta property="og:image" content="https://i.imgur.com/DCmv7Gj.png">
+<meta property="og:image" content="https://i.imgur.com/vVJBaek.png">
+<meta property="article:published_time" content="2022-04-01T08:09:00.000Z">
+<meta property="article:modified_time" content="2022-04-03T09:44:17.089Z">
+<meta property="article:author" content="sinyu">
+<meta property="article:tag" content="IPV6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/D82GJWd.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/blog/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/blog/">
+                
+                <img src="/blog/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/blog/archives">歸檔</a>
+            
+            <a class="navbar-item "
+               href="/blog/categories">分類</a>
+            
+            <a class="navbar-item "
+               href="/blog/tags">標籤</a>
+            
+            <a class="navbar-item "
+               href="/blog/schedule">行程</a>
+            
+            <a class="navbar-item "
+               href="/blog/about">關於</a>
+            
+            <a class="navbar-item "
+               href="/blog/friends">好友</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+		
+<div class="column is-narrow has-text-centered">
+    <div class="dropdown is-up is-right is-hoverable" style="margin-top: -0.2em;">
+        <div class="dropdown-trigger">
+            <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu7">
+                <span class="icon">
+                    <i class="fas fa-globe"></i>
+                </span>
+                <span>繁體中文</span>
+                <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+            </button>
+        </div>
+        <div class="dropdown-menu has-text-left" role="menu" style="top:100%">
+            <div class="dropdown-content">
+            
+                <a href="/blog/2022/04/01/zh-tw/4G%20%E8%A1%8C%E5%8B%95%E6%95%B8%E6%93%9A%20IPV6%20%E6%9E%B6%E7%AB%99%E6%B8%AC%E8%A9%A6/" class="dropdown-item">
+                    繁體中文
+                </a>
+            
+                <a href="/blog/ja-jp/2022/04/01/zh-tw/4G%20%E8%A1%8C%E5%8B%95%E6%95%B8%E6%93%9A%20IPV6%20%E6%9E%B6%E7%AB%99%E6%B8%AC%E8%A9%A6/" class="dropdown-item">
+                    日本語
+                </a>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+            <a class="navbar-item" title="GitHub" target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            4G 行動數據 IPV6 架站測試
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2022-04-01T08:09:00.000Z" itemprop="datePublished">4月 1 2022</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/blog/categories/%E5%BF%83%E5%BE%97/">心得</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 分鐘 讀完 (約 439 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><hr>
+<blockquote>
+<p>本次實驗為使用4G 行動數據網路看使否能取得<strong>外部實體IP</strong>的實驗</p>
+</blockquote>
+<p>據所皆知，目前IPV4的IP已經不足夠使用因此於2012發展出IPV6解決IP不足問題，但是至今2022年目前仍未普及不過台灣目前電信商基本上都支援IPV4/IPV6服務，目前獲得的IPV4地址均為虛擬IP（非浮動IP）無法直接連線得需透過第三方通道（VPS、Zerotier）對內部網路進行穿透才能夠存取。</p>
+<span id="more"></span>
+
+<p>實驗工具為</p>
+<ul>
+<li><p>1.架設Flask網頁伺服器</p>
+</li>
+<li><p>2.網域代管平台</p>
+</li>
+<li><p>3.LINE Developers平台</p>
+</li>
+<li><p>4.4G路由器</p>
+</li>
+</ul>
+<h2 id="首先先將4G路由器APN設定為IPV4-IPV6服務"><a href="#首先先將4G路由器APN設定為IPV4-IPV6服務" class="headerlink" title="首先先將4G路由器APN設定為IPV4/IPV6服務"></a>首先先將4G路由器APN設定為IPV4/IPV6服務</h2><p><img src="https://i.imgur.com/D82GJWd.png"></p>
+<h2 id="確認路由器是否取得IPV6地址"><a href="#確認路由器是否取得IPV6地址" class="headerlink" title="確認路由器是否取得IPV6地址"></a>確認路由器是否取得IPV6地址</h2><p><img src="https://i.imgur.com/cQygYuj.png"></p>
+<h2 id="設定防火牆規則（允許通過的Port）"><a href="#設定防火牆規則（允許通過的Port）" class="headerlink" title="設定防火牆規則（允許通過的Port）"></a>設定防火牆規則（允許通過的Port）</h2><p><img src="https://i.imgur.com/m9ep5tQ.png"></p>
+<h2 id="啟動Flask伺服器，設定Port為防火牆允許值"><a href="#啟動Flask伺服器，設定Port為防火牆允許值" class="headerlink" title="啟動Flask伺服器，設定Port為防火牆允許值"></a>啟動Flask伺服器，設定Port為防火牆允許值</h2><p><img src="https://i.imgur.com/uzmFuWe.png"></p>
+<h2 id="確認網頁是否能正常連線"><a href="#確認網頁是否能正常連線" class="headerlink" title="確認網頁是否能正常連線"></a>確認網頁是否能正常連線</h2><p><img src="https://i.imgur.com/ycyi4sL.png"></p>
+<h2 id="網域代管設定（指定跳轉IP）"><a href="#網域代管設定（指定跳轉IP）" class="headerlink" title="網域代管設定（指定跳轉IP）"></a>網域代管設定（指定跳轉IP）</h2><p><img src="https://i.imgur.com/DCmv7Gj.png"></p>
+<h2 id="確認其他設備是否能夠正常連線"><a href="#確認其他設備是否能夠正常連線" class="headerlink" title="確認其他設備是否能夠正常連線"></a>確認其他設備是否能夠正常連線</h2><p><img src="https://i.imgur.com/vVJBaek.png"></p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><ul>
+<li>目前台灣電信商所發布的IPV6地址確實是實體IP，但是做為長期架站仍不合適在測試一天後發現中途會有斷線、斷線不穩定且分配到的實體IP也無法確認是否會改變，還有純IPV4的使用者也無法直接連線IPV6的網頁，網頁程式開發上Webhook也不支援IPV6地址未來在實用性還有待商榷….。</li>
+</ul>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/blog/tags/IPV6/">#IPV6</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/blog/2022/04/03/zh-tw/nvm%20%E6%8C%87%E4%BB%A4/">nvm 指令</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/blog/2022/03/02/zh-tw/hexo%20%E6%8C%87%E4%BB%A4/">hexo 指令</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2022 sinyu&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        target="_blank" rel="noopener" href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-TW");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/blog/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/blog/js/insight.js"></script>
+
+    
+</body>
+</html>
