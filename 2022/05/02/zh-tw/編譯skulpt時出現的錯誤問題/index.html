@@ -2,13 +2,13 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>分類: 心得 - 程式記事</title>
+<title>編譯skulpt時出現的錯誤問題 - 程式記事</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<link href="/blog/ja-jp/categories/%E5%BF%83%E5%BE%97/page/2/index.html" rel="alternate" hreflang="ja-JP" />
+<link href="/blog/ja-jp/2022/05/02/zh-tw/%E7%B7%A8%E8%AD%AFskulpt%E6%99%82%E5%87%BA%E7%8F%BE%E7%9A%84%E9%8C%AF%E8%AA%A4%E5%95%8F%E9%A1%8C/" rel="alternate" hreflang="ja-JP" />
     
 
 
@@ -18,12 +18,19 @@
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="程式記事">
-<meta property="og:url" content="https://sinyuryuu.github.io/blog/categories/%E5%BF%83%E5%BE%97/page/2/index.html">
+    <meta name="description" content="在建構blockpy時可能會遇到編譯skulpt吃現錯誤問題">
+<meta property="og:type" content="article">
+<meta property="og:title" content="編譯skulpt時出現的錯誤問題">
+<meta property="og:url" content="https://sinyuryuu.github.io/blog/2022/05/02/zh-tw/%E7%B7%A8%E8%AD%AFskulpt%E6%99%82%E5%87%BA%E7%8F%BE%E7%9A%84%E9%8C%AF%E8%AA%A4%E5%95%8F%E9%A1%8C/index.html">
 <meta property="og:site_name" content="程式記事">
+<meta property="og:description" content="在建構blockpy時可能會遇到編譯skulpt吃現錯誤問題">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-05-02T02:10:11.000Z">
+<meta property="article:modified_time" content="2022-05-02T02:26:36.979Z">
 <meta property="article:author" content="sinyu">
+<meta property="article:tag" content="blockly">
+<meta property="article:tag" content="blockpy">
+<meta property="article:tag" content="skulpt">
 <meta name="twitter:card" content="summary">
 
 
@@ -127,11 +134,11 @@
         <div class="dropdown-menu has-text-left" role="menu" style="top:100%">
             <div class="dropdown-content">
             
-                <a href="/blog/categories/%E5%BF%83%E5%BE%97/page/2/index.html" class="dropdown-item">
+                <a href="/blog/2022/05/02/zh-tw/%E7%B7%A8%E8%AD%AFskulpt%E6%99%82%E5%87%BA%E7%8F%BE%E7%9A%84%E9%8C%AF%E8%AA%A4%E5%95%8F%E9%A1%8C/" class="dropdown-item">
                     繁體中文
                 </a>
             
-                <a href="/blog/ja-jp/categories/%E5%BF%83%E5%BE%97/page/2/index.html" class="dropdown-item">
+                <a href="/blog/ja-jp/2022/05/02/zh-tw/%E7%B7%A8%E8%AD%AFskulpt%E6%99%82%E5%87%BA%E7%8F%BE%E7%9A%84%E9%8C%AF%E8%AA%A4%E5%95%8F%E9%A1%8C/" class="dropdown-item">
                     日本語
                 </a>
             
@@ -153,26 +160,18 @@
     </div>
 </nav>
 
-    <section class="section section-heading">
+    <section class="section">
     <div class="container">
-        <div class="content">
-            <h5><i class="far fa-folder"></i>心得</h5>
-        </div>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
+    <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/blog/2021/03/24/zh-tw/ai2+google%20sheet%20script/" itemprop="url">ai2+google sheet script</a>
+            編譯skulpt時出現的錯誤問題
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2021-03-24T03:00:00.000Z" itemprop="datePublished">3月 24 2021</time>
+                <time datetime="2022-05-02T02:10:11.000Z" itemprop="datePublished">5月 2 2022</time>
             
         </span>
         
@@ -185,216 +184,80 @@
         <span class="column is-narrow">
             
             
-            2 分鐘 讀完 (約 367 字)
+            2 分鐘 讀完 (約 281 字)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><p>程式碼為下</p></body></html>
-        <p class="article-more-link">
-            <a href="/blog/2021/03/24/zh-tw/ai2+google%20sheet%20script/#more">閱讀更多</a>
-        </p>
+        <html><head></head><body><p>在建構blockpy時可能會遇到編譯skulpt吃現錯誤問題</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Error: Cannot find module '../../dist/skulpt.js'</span><br><span class="line">Require stack:</span><br><span class="line">- /home/lucian/projects/blockpy-robot/blockpy-edu/skulpt/support/run/require-skulpt.js</span><br><span class="line">- /home/lucian/projects/blockpy-robot/blockpy-edu/skulpt/support/build/wrapmodules.js</span><br><span class="line">    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)</span><br><span class="line">    at Function.Module._load (internal/modules/cjs/loader.js:725:27)</span><br><span class="line">    at Module.require (internal/modules/cjs/loader.js:952:19)</span><br><span class="line">    at require (internal/modules/cjs/helpers.js:88:18)</span><br><span class="line">    at requireSkulpt (/home/lucian/projects/blockpy-robot/blockpy-edu/skulpt/support/run/require-skulpt.js:16:30)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/home/lucian/projects/blockpy-robot/blockpy-edu/skulpt/support/build/wrapmodules.js:8:14)</span><br><span class="line">    at Module._compile (internal/modules/cjs/loader.js:1063:30)</span><br><span class="line">    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)</span><br><span class="line">    at Module.load (internal/modules/cjs/loader.js:928:32)</span><br><span class="line">    at Function.Module._load (internal/modules/cjs/loader.js:769:14) {</span><br><span class="line">  code: 'MODULE_NOT_FOUND',</span><br><span class="line">  requireStack: [</span><br><span class="line">    '/home/lucian/projects/blockpy-robot/blockpy-edu/skulpt/support/run/require-skulpt.js',</span><br><span class="line">    '/home/lucian/projects/blockpy-robot/blockpy-edu/skulpt/support/build/wrapmodules.js'</span><br><span class="line">  ]</span><br><span class="line">}</span><br><span class="line">No skulpt distribution, run 'npm run build' or 'npm run devbuild' first.</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Cannot find module '../../dist/skulpt.js'</span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<p>找不到指定模組、路徑</p>
+<p><strong>解決方法：</strong></p>
+<p>設置</p>
+<p>blockpy-edu\skulpt\support\run\require-skulpt.js</p>
+<p><code>skulpt = require("../../dist/skulpt.min.js");</code>修改為<code>skulpt = require("../dist/skulpt.min.js")</code></p>
+<p>或是在skulpt同目錄放置<strong>dist/skulpt.js</strong> 資料料夾及檔案</p>
+<p>參考資料：</p>
+<p>[１]: Error when building skulpt · Issue #114 · blockpy-edu/blockpy · GitHub(<a target="_blank" rel="noopener" href="https://github.com/blockpy-edu/blockpy/issues/114">https://github.com/blockpy-edu/blockpy/issues/114</a>)</p>
+</body></html>
     
     </div>
     
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/blog/tags/blockly/">#blockly</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/blog/tags/blockpy/">#blockpy</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/blog/tags/skulpt/">#skulpt</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/blog/2022/04/03/zh-tw/nvm%20%E6%8C%87%E4%BB%A4/">nvm 指令</a>
+            
+        </span>
+    </div>
     
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
 
 
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
     
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/blog/2020/12/25/zh-tw/Raspberry%20Pi%203b+%20%E5%AE%89%E8%A3%9DWindows%2010%20ARM%20Build%2021277/" itemprop="url">Raspberry Pi 3b+ 安裝Windows 10 ARM Build 21277</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2020-12-25T10:26:00.000Z" itemprop="datePublished">12月 25 2020</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/blog/categories/%E5%BF%83%E5%BE%97/">心得</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            5 分鐘 讀完 (約 704 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+<div id="disqus_thread">
     
-        <html><head></head><body><p> 最近看到蘋果的M1晶片看起來很厲害，還能安裝ARM版的Win10看來距離ARM架構下模擬x64已經成熟了嗎?</p></body></html>
-        <p class="article-more-link">
-            <a href="/blog/2020/12/25/zh-tw/Raspberry%20Pi%203b+%20%E5%AE%89%E8%A3%9DWindows%2010%20ARM%20Build%2021277/#more">閱讀更多</a>
-        </p>
-    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
     </div>
     
-    
-</article>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
 
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/blog/2020/12/24/zh-tw/FFU%E6%98%A0%E5%83%8F%E5%BB%BA%E7%AB%8B/" itemprop="url">FFU映像建立</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2020-12-24T00:54:00.000Z" itemprop="datePublished">12月 24 2020</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/blog/categories/%E5%BF%83%E5%BE%97/">心得</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            幾秒 讀完 (約 52 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>將映像檔寫入硬碟</p>
-<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism /apply-image /imagefile:C:\install.wim /index:1 /applydir:D:\</span><br></pre></td></tr></tbody></table></figure></body></html>
-        <p class="article-more-link">
-            <a href="/blog/2020/12/24/zh-tw/FFU%E6%98%A0%E5%83%8F%E5%BB%BA%E7%AB%8B/#more">閱讀更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/blog/2020/12/17/zh-tw/colab%20%E8%AE%80%E5%8F%96Google%20%E9%9B%B2%E7%AB%AF%E7%A1%AC%E7%A2%9F/" itemprop="url">colab 讀取Google 雲端硬碟</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2020-12-17T01:08:00.000Z" itemprop="datePublished">12月 17 2020</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/blog/categories/%E5%BF%83%E5%BE%97/">心得</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            1 分鐘 讀完 (約 151 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p><a target="_blank" rel="noopener" href="https://1.bp.blogspot.com/-JSb396LhvLM/X9m6XxtoLTI/AAAAAAAAAfE/on5OO1PDsn8u-QVly2De1Pp4e0f5d8UKwCLcBGAsYHQ/s916/colab1.png"><img src="https://1.bp.blogspot.com/-JSb396LhvLM/X9m6XxtoLTI/AAAAAAAAAfE/on5OO1PDsn8u-QVly2De1Pp4e0f5d8UKwCLcBGAsYHQ/s16000/colab1.png" alt="img"></a></p>
-<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import drivedrive.mount('/content/drive')</span><br></pre></td></tr></tbody></table></figure>
-
-<p>輸入授權碼後可以在側邊攔的檔案選項的路徑content/drive/MyDrive找到雲端硬碟的資料</p></body></html>
-        <p class="article-more-link">
-            <a href="/blog/2020/12/17/zh-tw/colab%20%E8%AE%80%E5%8F%96Google%20%E9%9B%B2%E7%AB%AF%E7%A1%AC%E7%A2%9F/#more">閱讀更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/blog/2020/12/14/zh-tw/Depix%E9%A6%AC%E8%B3%BD%E5%85%8B%E5%BE%A9%E5%8E%9F%E6%8A%80%E8%A1%93/" itemprop="url">Depix馬賽克復原技術</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2020-12-13T23:50:00.000Z" itemprop="datePublished">12月 14 2020</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/blog/categories/%E5%BF%83%E5%BE%97/">心得</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            4 分鐘 讀完 (約 573 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>今天無聊滑Fcaebook時發現了一則新聞 <strong><a target="_blank" rel="noopener" href="https://technews.tw/2020/12/13/the-mosaic-picture-is-restored-by-ai/">可怕！打過「馬賽克」的圖竟能以 AI 還原</a></strong> 如此轟動的標題…<br>雖然這是台灣媒體常態但還是希望收斂一點😒 接下來看正題看起來確實還蠻厲害的，馬上前往</p></body></html>
-        <p class="article-more-link">
-            <a href="/blog/2020/12/14/zh-tw/Depix%E9%A6%AC%E8%B3%BD%E5%85%8B%E5%BE%A9%E5%8E%9F%E6%8A%80%E8%A1%93/#more">閱讀更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-    
-        
-<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-    <div class="pagination-previous">
-        <a href="/blog/categories/%E5%BF%83%E5%BE%97/">上一頁</a>
-    </div>
-    <div class="pagination-next is-invisible is-hidden-mobile">
-        <a href="/blog/categories/%E5%BF%83%E5%BE%97/page/3/">下一頁</a>
-    </div>
-    <ul class="pagination-list is-hidden-mobile">
-        
-        <li><a class="pagination-link" href="/blog/categories/%E5%BF%83%E5%BE%97/">1</a></li>
-        
-        <li><a class="pagination-link is-current" href="/blog/categories/%E5%BF%83%E5%BE%97/page/2/">2</a></li>
-        
-    </ul>
-</nav>
-    
     </div>
 </section>
     <footer class="footer">
