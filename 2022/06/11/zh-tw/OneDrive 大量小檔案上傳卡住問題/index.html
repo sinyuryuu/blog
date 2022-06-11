@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<link href="/blog/ja-jp/2022/06/11/zh-tw/OneDeive/" rel="alternate" hreflang="ja-JP" />
+<link href="/blog/ja-jp/2022/06/11/zh-tw/OneDrive%20%E5%A4%A7%E9%87%8F%E5%B0%8F%E6%AA%94%E6%A1%88%E4%B8%8A%E5%82%B3%E5%8D%A1%E4%BD%8F%E5%95%8F%E9%A1%8C/" rel="alternate" hreflang="ja-JP" />
     
 
 
@@ -18,18 +18,18 @@
 
 
 
-    <meta name="description" content="雲端上傳同步雖然方便，但有時候還是會出現一些小bug…? 像是同步到某個檔案就會整個卡住無法繼續上傳，一直重開OneDrive也不是一個好方法    網路上爬文了一圈，好像也沒很好的解決方法…這時候心想有時候人還是只能靠自己 打開了OneDrive設置看看有沒有甚麼設定能解決，最後在限制上傳速度部分發現若限制上傳速度後有可以開始順利同步了!   ❕原理是甚麼目前雖然仍然不明，推測是上傳檔案太快導致">
+    <meta name="description" content="雲端上傳同步雖然方便，但有時候還是會出現一些小bug…? 像是同步到某個檔案就會整個卡住無法繼續上傳，一直重開OneDrive也不是一個好方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OneDrive 大量小檔案上傳卡住問題">
-<meta property="og:url" content="https://sinyuryuu.github.io/blog/2022/06/11/zh-tw/OneDeive/index.html">
+<meta property="og:url" content="https://sinyuryuu.github.io/blog/2022/06/11/zh-tw/OneDrive%20%E5%A4%A7%E9%87%8F%E5%B0%8F%E6%AA%94%E6%A1%88%E4%B8%8A%E5%82%B3%E5%8D%A1%E4%BD%8F%E5%95%8F%E9%A1%8C/index.html">
 <meta property="og:site_name" content="程式記事">
-<meta property="og:description" content="雲端上傳同步雖然方便，但有時候還是會出現一些小bug…? 像是同步到某個檔案就會整個卡住無法繼續上傳，一直重開OneDrive也不是一個好方法    網路上爬文了一圈，好像也沒很好的解決方法…這時候心想有時候人還是只能靠自己 打開了OneDrive設置看看有沒有甚麼設定能解決，最後在限制上傳速度部分發現若限制上傳速度後有可以開始順利同步了!   ❕原理是甚麼目前雖然仍然不明，推測是上傳檔案太快導致">
+<meta property="og:description" content="雲端上傳同步雖然方便，但有時候還是會出現一些小bug…? 像是同步到某個檔案就會整個卡住無法繼續上傳，一直重開OneDrive也不是一個好方法">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://media.tenor.com/images/72fec84ab375d918d9d12da3a6254086/tenor.gif">
 <meta property="og:image" content="https://i.imgur.com/3ielCsH.png">
 <meta property="og:image" content="https://i.imgur.com/xErOmKR.png">
 <meta property="article:published_time" content="2022-06-11T08:14:11.000Z">
-<meta property="article:modified_time" content="2022-06-11T08:28:52.594Z">
+<meta property="article:modified_time" content="2022-06-11T08:37:55.881Z">
 <meta property="article:author" content="sinyu">
 <meta property="article:tag" content="OneDrive">
 <meta property="article:tag" content="上傳卡住">
@@ -137,11 +137,11 @@
         <div class="dropdown-menu has-text-left" role="menu" style="top:100%">
             <div class="dropdown-content">
             
-                <a href="/blog/2022/06/11/zh-tw/OneDeive/" class="dropdown-item">
+                <a href="/blog/2022/06/11/zh-tw/OneDrive%20%E5%A4%A7%E9%87%8F%E5%B0%8F%E6%AA%94%E6%A1%88%E4%B8%8A%E5%82%B3%E5%8D%A1%E4%BD%8F%E5%95%8F%E9%A1%8C/" class="dropdown-item">
                     繁體中文
                 </a>
             
-                <a href="/blog/ja-jp/2022/06/11/zh-tw/OneDeive/" class="dropdown-item">
+                <a href="/blog/ja-jp/2022/06/11/zh-tw/OneDrive%20%E5%A4%A7%E9%87%8F%E5%B0%8F%E6%AA%94%E6%A1%88%E4%B8%8A%E5%82%B3%E5%8D%A1%E4%BD%8F%E5%95%8F%E9%A1%8C/" class="dropdown-item">
                     日本語
                 </a>
             
@@ -187,7 +187,7 @@
         <span class="column is-narrow">
             
             
-            1 分鐘 讀完 (約 201 字)
+            1 分鐘 讀完 (約 202 字)
         </span>
         
     </div>
@@ -197,6 +197,8 @@
 <p>像是同步到某個檔案就會整個卡住無法繼續上傳，一直重開OneDrive也不是一個好方法</p>
 <p><img src="https://media.tenor.com/images/72fec84ab375d918d9d12da3a6254086/tenor.gif" alt="img"></p>
 <p><img src="https://i.imgur.com/3ielCsH.png"></p>
+<span id="more"></span>
+
 <hr>
 <p>網路上爬文了一圈，好像也沒很好的解決方法…這時候心想有時候人還是只能靠自己</p>
 <p>打開了OneDrive設置看看有沒有甚麼設定能解決，最後在限制上傳速度部分發現若限制上傳速度後有可以開始順利同步了!</p>
